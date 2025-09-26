@@ -84,3 +84,33 @@ SELECT sale_date, COUNT(*) AS sales_count
 FROM Sales 
 GROUP BY sale_date 
 ORDER BY sale_date;
+
+-- 12.  Retrieve product_name and unit_price from the Products table with the Highest Unit Price
+SELECT product_name, unit_price 
+FROM Products
+ORDER BY unit_price DESC
+LIMIT 1;
+
+-- 13 Retrieve the sale_id, product_id, and total_price from the Sales table for sales with a quantity_sold greater than 4.
+
+SELECT sale_id, product_id, total_price
+FROM Sales
+WHERE quantity_sold > 4;
+
+-- 14. Retrieve the product_name and unit_price from the Products table, ordering the results by unit_price in descending order.
+SELECT product_name, unit_price
+FROM Products
+ORDER BY unit_price DESC;
+
+-- 15. Retrieve the total_price of all sales, rounding the values to two decimal places.
+SELECT ROUND(SUM(total_price), 2) AS total_sales
+FROM Sales;
+
+-- 16. Calculate the average total_price of sales in the Sales table.
+SELECT AVG(total_price) AS avg_total_price
+FROM Sales;
+
+-- 17. Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'.
+SELECT sale_id, TO_CHAR(sale_date, 'YYYY-MM-DD') AS formatted_date 
+FROM Sales;
+
