@@ -114,3 +114,39 @@ FROM Sales;
 SELECT sale_id, TO_CHAR(sale_date, 'YYYY-MM-DD') AS formatted_date 
 FROM Sales;
 
+-- 18. Calculate the total revenue generated from sales of products in the 'Electronics' category.
+SELECT SUM(Sales.total_price) AS total_revenue
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id
+WHERE Products.category = 'Electronics';
+
+-- 19. Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600.
+SELECT product_name, unit_price
+FROM Products
+WHERE unit_price BETWEEN 20 AND 600;
+
+-- 20. Retrieve the product_name and category from the Products table, ordering the results by category in ascending order.
+SELECT product_name, category
+FROM Products
+ORDER BY category;
+
+-- SQL Practice Exercises for Intermediate
+
+-- 1. Calculate the total quantity_sold of products in the 'Electronics' category.
+SELECT SUM(Sales.quantity_sold) AS total_quantity_sold
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id
+WHERE Products.category = 'Electronics';
+
+-- 2. Retrieve the product_name and total_price from the Sales table, calculating the total_price as quantity_sold multiplied by unit_price.
+SELECT product_name, quantity_sold * unit_price AS total_price
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id;
+
+-- 3. Identify the Most Frequently Sold Product from Sales table
+SELECT product_id, COUNT(*) AS sales_count 
+FROM Sales 
+GROUP BY product_id 
+ORDER BY sales_count DESC 
+LIMIT 1;
+ 
